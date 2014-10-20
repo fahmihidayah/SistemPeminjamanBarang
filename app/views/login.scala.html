@@ -1,0 +1,62 @@
+@(message: String)
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Login</title>
+	<link rel="stylesheet" href=@routes.Assets.at("css/style.css") media="screen" type="text/css" />
+	<script type="text/javascript" src=@routes.Assets.at("js/jquery-1.11.0.js")></script>
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function() {
+	      $(".btn").click(function(event){
+	    	  $.ajax({
+	    		  type: "POST",
+	    		  url: "/api/login",
+	    		  data: "username="+$("#username").val()+"&password="+$("#password").val()+"",
+	    		  success: function(msg){
+	    		        alert( "success login" + msg);
+	    		        
+	    		        //window.location.replace("/dashboard");
+	    		        //$.cookie("test", 1);
+	    		  },
+	    		  error: function(XMLHttpRequest, textStatus, errorThrown) {
+	    		     alert("login error");
+	    		  }
+	    		});
+	      	});
+	   	});
+	</script>
+</head>
+
+<body>
+
+  <body>
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>SISINBAR</h1>
+			</div>
+
+			<div class="login-form">
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="username" id="username">
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				</div>
+
+				<div class="control-group">
+				<input type="password" class="login-field" value="" placeholder="password" id="password">
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				</div>
+
+				<a class="btn btn-primary btn-large btn-block" >login</a>
+				<a class="login-link" href=@routes.FrontEndController.index() id="lost">Lost your password?</a>
+			</div>
+		</div>
+	</div>
+</body>
+
+</body>
+
+</html>
