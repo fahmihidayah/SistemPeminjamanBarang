@@ -1,6 +1,6 @@
 // @SOURCE:/home/alifkecil/work/SistemPeminjamanBarang/conf/routes
-// @HASH:ee661048d8128406d77f4f887ba9204e24c3a511
-// @DATE:Mon Oct 20 16:50:24 WIT 2014
+// @HASH:a0826a273ef549a3568d51876ec3e109d4bae88d
+// @DATE:Tue Oct 21 06:16:44 WIT 2014
 
 package controllers;
 

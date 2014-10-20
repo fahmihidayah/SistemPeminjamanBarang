@@ -20,13 +20,13 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object dashboard extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template1[String,play.api.templates.HtmlFormat.Appendable] {
+object dashboardAdmin extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template2[User,Admin,play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply/*1.2*/(message: String):play.api.templates.HtmlFormat.Appendable = {
+    def apply/*1.2*/(user: User, admin : Admin):play.api.templates.HtmlFormat.Appendable = {
         _display_ {
 
-Seq[Any](format.raw/*1.19*/("""
+Seq[Any](format.raw/*1.29*/("""
 <!DOCTYPE html>
 <html lang="en">
 
@@ -513,19 +513,19 @@ Seq[Any](format.raw/*1.19*/("""
 """))}
     }
     
-    def render(message:String): play.api.templates.HtmlFormat.Appendable = apply(message)
+    def render(user:User,admin:Admin): play.api.templates.HtmlFormat.Appendable = apply(user,admin)
     
-    def f:((String) => play.api.templates.HtmlFormat.Appendable) = (message) => apply(message)
+    def f:((User,Admin) => play.api.templates.HtmlFormat.Appendable) = (user,admin) => apply(user,admin)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Mon Oct 20 16:50:25 WIT 2014
-                    SOURCE: /home/alifkecil/work/SistemPeminjamanBarang/app/views/dashboard.scala.html
-                    HASH: b083c5c9e837f32542e53ae39c4d3f495f3da0a5
-                    MATRIX: 778->1|889->18|1311->404|1326->410|1383->445|1478->504|1493->510|1545->540|1648->607|1663->613|1721->649|1819->711|1834->717|1913->774|25903->24727|25919->24733|25975->24766|26080->24834|26096->24840|26152->24873|26256->24940|26272->24946|26341->24992|26406->25020|26422->25026|26490->25071|26555->25099|26571->25105|26640->25151
+                    DATE: Tue Oct 21 06:15:13 WIT 2014
+                    SOURCE: /home/alifkecil/work/SistemPeminjamanBarang/app/views/dashboardAdmin.scala.html
+                    HASH: 425ca576db25a0bedee1e7f7519fca3fd7ed9a80
+                    MATRIX: 787->1|908->28|1330->414|1345->420|1402->455|1497->514|1512->520|1564->550|1667->617|1682->623|1740->659|1838->721|1853->727|1932->784|25922->24737|25938->24743|25994->24776|26099->24844|26115->24850|26171->24883|26275->24950|26291->24956|26360->25002|26425->25030|26441->25036|26509->25081|26574->25109|26590->25115|26659->25161
                     LINES: 26->1|29->1|43->15|43->15|43->15|45->17|45->17|45->17|48->20|48->20|48->20|51->23|51->23|51->23|500->472|500->472|500->472|503->475|503->475|503->475|506->478|506->478|506->478|507->479|507->479|507->479|508->480|508->480|508->480
                     -- GENERATED --
                 */

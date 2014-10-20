@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import models.Admin;
 import models.Auth;
 import models.Barang;
 import models.Peminjam;
@@ -14,6 +15,7 @@ import models.User;
 import fahmi.lib.JsonHandler;
 import fahmi.lib.RequestHandler;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -140,6 +142,22 @@ public class BackEndAdminController extends Controller{
 		return ok(JsonHandler.getSuitableResponse("success insert user", true));
 	}
 	
+	public static Result insertAdmin(){
+		String key[] = {"nama", "userName"};
+		RequestHandler requestHandler = new RequestHandler(frmBarang);
+		requestHandler.setArrayKey(key);
+		if(requestHandler.isContainError()){
+			return badRequest(JsonHandler.getSuitableResponse(requestHandler.getErrorMessage(), false));
+		}
+		
+		User user = User.finder.where().eq("userName", requestHandler.getStringValue("userName")).findUnique();
+		Admin admin = new Admin();
+		admin.nama = requestHandler.getStringValue("nama");
+		admin.user = user;
+		admin.save();
+		return ok(JsonHandler.getSuitableResponse(admin, true));
+ 	}
+	
 	public static Result listUser(){
 		List<User> listUser = User.finder.all();
 		return ok(JsonHandler.getSuitableResponse(listUser, true));
@@ -160,9 +178,12 @@ public class BackEndAdminController extends Controller{
 		auth.createToken();
 		auth.save();
 		
+		Admin admin = Admin.finder.where().eq("user", user).findUnique();
+		
 		ObjectNode data = play.libs.Json.newObject();
 		data.put("auth", auth.authToken);
-		
+		data.put("type", "admin");
+		data.put("admin", Json.toJson(admin));
 		return ok(JsonHandler.getSuitableResponse(data, true));
 	}
 	

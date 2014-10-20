@@ -44,17 +44,16 @@ Seq[Any](format.raw/*1.19*/("""
 	    		  url: "/api/login",
 	    		  data: "username="+$("#username").val()+"&password="+$("#password").val()+"",
 	    		  success: function(msg)"""),format.raw/*18.32*/("""{"""),format.raw/*18.33*/("""
-	    		        alert( "success login" + msg);
 	    		        
-	    		        //window.location.replace("/dashboard");
+	    		        window.location.replace("/dashboard/"+msg.data.admin.user.id);
 	    		        //$.cookie("test", 1);
-	    		  """),format.raw/*23.10*/("""}"""),format.raw/*23.11*/(""",
-	    		  error: function(XMLHttpRequest, textStatus, errorThrown) """),format.raw/*24.67*/("""{"""),format.raw/*24.68*/("""
+	    		  """),format.raw/*22.10*/("""}"""),format.raw/*22.11*/(""",
+	    		  error: function(XMLHttpRequest, textStatus, errorThrown) """),format.raw/*23.67*/("""{"""),format.raw/*23.68*/("""
 	    		     alert("login error");
-	    		  """),format.raw/*26.10*/("""}"""),format.raw/*26.11*/("""
-	    		"""),format.raw/*27.8*/("""}"""),format.raw/*27.9*/(""");
-	      	"""),format.raw/*28.9*/("""}"""),format.raw/*28.10*/(""");
-	   	"""),format.raw/*29.6*/("""}"""),format.raw/*29.7*/(""");
+	    		  """),format.raw/*25.10*/("""}"""),format.raw/*25.11*/("""
+	    		"""),format.raw/*26.8*/("""}"""),format.raw/*26.9*/(""");
+	      	"""),format.raw/*27.9*/("""}"""),format.raw/*27.10*/(""");
+	   	"""),format.raw/*28.6*/("""}"""),format.raw/*28.7*/(""");
 	</script>
 </head>
 
@@ -79,7 +78,7 @@ Seq[Any](format.raw/*1.19*/("""
 				</div>
 
 				<a class="btn btn-primary btn-large btn-block" >login</a>
-				<a class="login-link" href="""),_display_(Seq[Any](/*54.33*/routes/*54.39*/.FrontEndController.index())),format.raw/*54.66*/(""" id="lost">Lost your password?</a>
+				<a class="login-link" href="""),_display_(Seq[Any](/*53.33*/routes/*53.39*/.FrontEndController.index())),format.raw/*53.66*/(""" id="lost">Lost your password?</a>
 			</div>
 		</div>
 	</div>
@@ -99,11 +98,11 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Mon Oct 20 22:03:34 WIT 2014
+                    DATE: Tue Oct 21 06:42:49 WIT 2014
                     SOURCE: /home/alifkecil/work/SistemPeminjamanBarang/app/views/login.scala.html
-                    HASH: dac3a7d73be9a918182678320c09bcb918819e8e
-                    MATRIX: 774->1|885->18|1016->114|1030->120|1078->147|1186->219|1201->225|1256->258|1381->355|1410->356|1477->395|1506->396|1550->412|1579->413|1776->582|1805->583|1999->749|2028->750|2124->818|2153->819|2225->863|2254->864|2289->872|2317->873|2355->884|2384->885|2419->893|2447->894|3169->1580|3184->1586|3233->1613
-                    LINES: 26->1|29->1|37->9|37->9|37->9|38->10|38->10|38->10|40->12|40->12|41->13|41->13|42->14|42->14|46->18|46->18|51->23|51->23|52->24|52->24|54->26|54->26|55->27|55->27|56->28|56->28|57->29|57->29|82->54|82->54|82->54
+                    HASH: 4ea3d7ad51f8ce66b4bdd92ee94e7607374e6090
+                    MATRIX: 774->1|885->18|1016->114|1030->120|1078->147|1186->219|1201->225|1256->258|1381->355|1410->356|1477->395|1506->396|1550->412|1579->413|1776->582|1805->583|1975->725|2004->726|2100->794|2129->795|2201->839|2230->840|2265->848|2293->849|2331->860|2360->861|2395->869|2423->870|3145->1556|3160->1562|3209->1589
+                    LINES: 26->1|29->1|37->9|37->9|37->9|38->10|38->10|38->10|40->12|40->12|41->13|41->13|42->14|42->14|46->18|46->18|50->22|50->22|51->23|51->23|53->25|53->25|54->26|54->26|55->27|55->27|56->28|56->28|81->53|81->53|81->53
                     -- GENERATED --
                 */
             

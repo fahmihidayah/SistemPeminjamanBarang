@@ -15,11 +15,9 @@
 	    		  type: "POST",
 	    		  url: "/api/login",
 	    		  data: "username="+$("#username").val()+"&password="+$("#password").val()+"",
-	    		  success: function(msg){
-	    		        alert( "success login" + msg);
-	    		        
-	    		        //window.location.replace("/dashboard");
-	    		        //$.cookie("test", 1);
+	    		  success: function(msg){ // data sudah dalam bentuk json tinggal di ambil datanya
+	    		        window.location.replace("/dashboard/"+msg.data.admin.user.id);
+	    		        $.cookie("auth_key", msg.data.auth);
 	    		  },
 	    		  error: function(XMLHttpRequest, textStatus, errorThrown) {
 	    		     alert("login error");

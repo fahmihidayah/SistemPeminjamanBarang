@@ -1,6 +1,6 @@
 // @SOURCE:/home/alifkecil/work/SistemPeminjamanBarang/conf/routes
-// @HASH:ee661048d8128406d77f4f887ba9204e24c3a511
-// @DATE:Mon Oct 20 16:50:24 WIT 2014
+// @HASH:a0826a273ef549a3568d51876ec3e109d4bae88d
+// @DATE:Tue Oct 21 06:16:44 WIT 2014
 
 
 import play.core._
@@ -37,7 +37,7 @@ private[this] lazy val controllers_FrontEndController_login1 = Route("GET", Path
         
 
 // @LINE:8
-private[this] lazy val controllers_FrontEndController_dashboard2 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("dashboard"))))
+private[this] lazy val controllers_FrontEndController_dashboard2 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("dashboard/"),DynamicPart("idUser", """[^/]+""",true))))
         
 
 // @LINE:9
@@ -65,13 +65,17 @@ private[this] lazy val controllers_BackEndAdminController_listUser8 = Route("POS
         
 
 // @LINE:17
-private[this] lazy val controllers_BackEndAdminController_justTest9 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("api/test"))))
+private[this] lazy val controllers_BackEndAdminController_insertAdmin9 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("api/insert_admin"))))
         
 
-// @LINE:19
-private[this] lazy val controllers_Assets_at10 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+// @LINE:18
+private[this] lazy val controllers_BackEndAdminController_justTest10 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("api/test"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.FrontEndController.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.FrontEndController.login()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """dashboard""","""controllers.FrontEndController.dashboard()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """jqres""","""controllers.FrontEndController.jqres()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/login""","""controllers.BackEndAdminController.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/insert_barang""","""controllers.BackEndAdminController.insertBarang()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/list_barang""","""controllers.BackEndAdminController.listBarang()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/insert_user""","""controllers.BackEndAdminController.insertUser()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/list_user""","""controllers.BackEndAdminController.listUser()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/test""","""controllers.BackEndAdminController.justTest()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+
+// @LINE:20
+private[this] lazy val controllers_Assets_at11 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.FrontEndController.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.FrontEndController.login()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """dashboard/$idUser<[^/]+>""","""controllers.FrontEndController.dashboard(idUser:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """jqres""","""controllers.FrontEndController.jqres()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/login""","""controllers.BackEndAdminController.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/insert_barang""","""controllers.BackEndAdminController.insertBarang()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/list_barang""","""controllers.BackEndAdminController.listBarang()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/insert_user""","""controllers.BackEndAdminController.insertUser()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/list_user""","""controllers.BackEndAdminController.listUser()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/insert_admin""","""controllers.BackEndAdminController.insertAdmin()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """api/test""","""controllers.BackEndAdminController.justTest()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -97,8 +101,8 @@ case controllers_FrontEndController_login1(params) => {
 
 // @LINE:8
 case controllers_FrontEndController_dashboard2(params) => {
-   call { 
-        invokeHandler(controllers.FrontEndController.dashboard(), HandlerDef(this, "controllers.FrontEndController", "dashboard", Nil,"GET", """""", Routes.prefix + """dashboard"""))
+   call(params.fromPath[String]("idUser", None)) { (idUser) =>
+        invokeHandler(controllers.FrontEndController.dashboard(idUser), HandlerDef(this, "controllers.FrontEndController", "dashboard", Seq(classOf[String]),"GET", """""", Routes.prefix + """dashboard/$idUser<[^/]+>"""))
    }
 }
         
@@ -152,15 +156,23 @@ case controllers_BackEndAdminController_listUser8(params) => {
         
 
 // @LINE:17
-case controllers_BackEndAdminController_justTest9(params) => {
+case controllers_BackEndAdminController_insertAdmin9(params) => {
+   call { 
+        invokeHandler(controllers.BackEndAdminController.insertAdmin(), HandlerDef(this, "controllers.BackEndAdminController", "insertAdmin", Nil,"POST", """""", Routes.prefix + """api/insert_admin"""))
+   }
+}
+        
+
+// @LINE:18
+case controllers_BackEndAdminController_justTest10(params) => {
    call { 
         invokeHandler(controllers.BackEndAdminController.justTest(), HandlerDef(this, "controllers.BackEndAdminController", "justTest", Nil,"POST", """""", Routes.prefix + """api/test"""))
    }
 }
         
 
-// @LINE:19
-case controllers_Assets_at10(params) => {
+// @LINE:20
+case controllers_Assets_at11(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
         invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """ Map static resources from the /public folder to the /assets URL path""", Routes.prefix + """assets/$file<.+>"""))
    }

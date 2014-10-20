@@ -1,6 +1,6 @@
 // @SOURCE:/home/alifkecil/work/SistemPeminjamanBarang/conf/routes
-// @HASH:ee661048d8128406d77f4f887ba9204e24c3a511
-// @DATE:Mon Oct 20 16:50:24 WIT 2014
+// @HASH:a0826a273ef549a3568d51876ec3e109d4bae88d
+// @DATE:Tue Oct 21 06:16:44 WIT 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,7 +13,8 @@ import play.libs.F
 import Router.queryString
 
 
-// @LINE:19
+// @LINE:20
+// @LINE:18
 // @LINE:17
 // @LINE:16
 // @LINE:15
@@ -26,6 +27,7 @@ import Router.queryString
 // @LINE:6
 package controllers {
 
+// @LINE:18
 // @LINE:17
 // @LINE:16
 // @LINE:15
@@ -34,6 +36,12 @@ package controllers {
 // @LINE:12
 class ReverseBackEndAdminController {
     
+
+// @LINE:17
+def insertAdmin(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "api/insert_admin")
+}
+                                                
 
 // @LINE:14
 def listBarang(): Call = {
@@ -53,7 +61,7 @@ def insertUser(): Call = {
 }
                                                 
 
-// @LINE:17
+// @LINE:18
 def justTest(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "api/test")
 }
@@ -74,11 +82,11 @@ def login(): Call = {
 }
                           
 
-// @LINE:19
+// @LINE:20
 class ReverseAssets {
     
 
-// @LINE:19
+// @LINE:20
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -94,15 +102,15 @@ def at(file:String): Call = {
 class ReverseFrontEndController {
     
 
-// @LINE:8
-def dashboard(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "dashboard")
-}
-                                                
-
 // @LINE:9
 def jqres(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "jqres")
+}
+                                                
+
+// @LINE:8
+def dashboard(idUser:String): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "dashboard/" + implicitly[PathBindable[String]].unbind("idUser", dynamicString(idUser)))
 }
                                                 
 
@@ -124,7 +132,8 @@ def login(): Call = {
                   
 
 
-// @LINE:19
+// @LINE:20
+// @LINE:18
 // @LINE:17
 // @LINE:16
 // @LINE:15
@@ -137,6 +146,7 @@ def login(): Call = {
 // @LINE:6
 package controllers.javascript {
 
+// @LINE:18
 // @LINE:17
 // @LINE:16
 // @LINE:15
@@ -145,6 +155,17 @@ package controllers.javascript {
 // @LINE:12
 class ReverseBackEndAdminController {
     
+
+// @LINE:17
+def insertAdmin : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.BackEndAdminController.insertAdmin",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "api/insert_admin"})
+      }
+   """
+)
+                        
 
 // @LINE:14
 def listBarang : JavascriptReverseRoute = JavascriptReverseRoute(
@@ -179,7 +200,7 @@ def insertUser : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:17
+// @LINE:18
 def justTest : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.BackEndAdminController.justTest",
    """
@@ -215,11 +236,11 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
-// @LINE:19
+// @LINE:20
 class ReverseAssets {
     
 
-// @LINE:19
+// @LINE:20
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -240,23 +261,23 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 class ReverseFrontEndController {
     
 
-// @LINE:8
-def dashboard : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.FrontEndController.dashboard",
-   """
-      function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "dashboard"})
-      }
-   """
-)
-                        
-
 // @LINE:9
 def jqres : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.FrontEndController.jqres",
    """
       function() {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "jqres"})
+      }
+   """
+)
+                        
+
+// @LINE:8
+def dashboard : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.FrontEndController.dashboard",
+   """
+      function(idUser) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "dashboard/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("idUser", encodeURIComponent(idUser))})
       }
    """
 )
@@ -290,7 +311,8 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:19
+// @LINE:20
+// @LINE:18
 // @LINE:17
 // @LINE:16
 // @LINE:15
@@ -304,6 +326,7 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
+// @LINE:18
 // @LINE:17
 // @LINE:16
 // @LINE:15
@@ -312,6 +335,12 @@ package controllers.ref {
 // @LINE:12
 class ReverseBackEndAdminController {
     
+
+// @LINE:17
+def insertAdmin(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.BackEndAdminController.insertAdmin(), HandlerDef(this, "controllers.BackEndAdminController", "insertAdmin", Seq(), "POST", """""", _prefix + """api/insert_admin""")
+)
+                      
 
 // @LINE:14
 def listBarang(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
@@ -331,7 +360,7 @@ def insertUser(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:17
+// @LINE:18
 def justTest(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.BackEndAdminController.justTest(), HandlerDef(this, "controllers.BackEndAdminController", "justTest", Seq(), "POST", """""", _prefix + """api/test""")
 )
@@ -352,11 +381,11 @@ def login(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 }
                           
 
-// @LINE:19
+// @LINE:20
 class ReverseAssets {
     
 
-// @LINE:19
+// @LINE:20
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -372,15 +401,15 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 class ReverseFrontEndController {
     
 
-// @LINE:8
-def dashboard(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.FrontEndController.dashboard(), HandlerDef(this, "controllers.FrontEndController", "dashboard", Seq(), "GET", """""", _prefix + """dashboard""")
-)
-                      
-
 // @LINE:9
 def jqres(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.FrontEndController.jqres(), HandlerDef(this, "controllers.FrontEndController", "jqres", Seq(), "GET", """""", _prefix + """jqres""")
+)
+                      
+
+// @LINE:8
+def dashboard(idUser:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.FrontEndController.dashboard(idUser), HandlerDef(this, "controllers.FrontEndController", "dashboard", Seq(classOf[String]), "GET", """""", _prefix + """dashboard/$idUser<[^/]+>""")
 )
                       
 
