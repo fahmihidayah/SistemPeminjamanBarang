@@ -189,6 +189,6 @@ public class BackEndAdminController extends Controller{
 	
 	
 	public static Result justTest(){
-		return ok("gantian yaaa");
+		return ok("fahmi");
 	}
 }
