@@ -43,17 +43,16 @@ Seq[Any](format.raw/*1.19*/("""
 	    		  type: "POST",
 	    		  url: "/api/login",
 	    		  data: "username="+$("#username").val()+"&password="+$("#password").val()+"",
-	    		  success: function(msg)"""),format.raw/*18.32*/("""{"""),format.raw/*18.33*/("""
-	    		        
+	    		  success: function(msg)"""),format.raw/*18.32*/("""{"""),format.raw/*18.33*/(""" // data sudah dalam bentuk json tinggal di ambil datanya
 	    		        window.location.replace("/dashboard/"+msg.data.admin.user.id);
-	    		        //$.cookie("test", 1);
-	    		  """),format.raw/*22.10*/("""}"""),format.raw/*22.11*/(""",
-	    		  error: function(XMLHttpRequest, textStatus, errorThrown) """),format.raw/*23.67*/("""{"""),format.raw/*23.68*/("""
+	    		        $.cookie("auth_key", msg.data.auth);
+	    		  """),format.raw/*21.10*/("""}"""),format.raw/*21.11*/(""",
+	    		  error: function(XMLHttpRequest, textStatus, errorThrown) """),format.raw/*22.67*/("""{"""),format.raw/*22.68*/("""
 	    		     alert("login error");
-	    		  """),format.raw/*25.10*/("""}"""),format.raw/*25.11*/("""
-	    		"""),format.raw/*26.8*/("""}"""),format.raw/*26.9*/(""");
-	      	"""),format.raw/*27.9*/("""}"""),format.raw/*27.10*/(""");
-	   	"""),format.raw/*28.6*/("""}"""),format.raw/*28.7*/(""");
+	    		  """),format.raw/*24.10*/("""}"""),format.raw/*24.11*/("""
+	    		"""),format.raw/*25.8*/("""}"""),format.raw/*25.9*/(""");
+	      	"""),format.raw/*26.9*/("""}"""),format.raw/*26.10*/(""");
+	   	"""),format.raw/*27.6*/("""}"""),format.raw/*27.7*/(""");
 	</script>
 </head>
 
@@ -78,7 +77,7 @@ Seq[Any](format.raw/*1.19*/("""
 				</div>
 
 				<a class="btn btn-primary btn-large btn-block" >login</a>
-				<a class="login-link" href="""),_display_(Seq[Any](/*53.33*/routes/*53.39*/.FrontEndController.index())),format.raw/*53.66*/(""" id="lost">Lost your password?</a>
+				<a class="login-link" href="""),_display_(Seq[Any](/*52.33*/routes/*52.39*/.FrontEndController.index())),format.raw/*52.66*/(""" id="lost">Lost your password?</a>
 			</div>
 		</div>
 	</div>
@@ -98,11 +97,11 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Tue Oct 21 06:42:49 WIT 2014
-                    SOURCE: /home/alifkecil/work/SistemPeminjamanBarang/app/views/login.scala.html
-                    HASH: 4ea3d7ad51f8ce66b4bdd92ee94e7607374e6090
-                    MATRIX: 774->1|885->18|1016->114|1030->120|1078->147|1186->219|1201->225|1256->258|1381->355|1410->356|1477->395|1506->396|1550->412|1579->413|1776->582|1805->583|1975->725|2004->726|2100->794|2129->795|2201->839|2230->840|2265->848|2293->849|2331->860|2360->861|2395->869|2423->870|3145->1556|3160->1562|3209->1589
-                    LINES: 26->1|29->1|37->9|37->9|37->9|38->10|38->10|38->10|40->12|40->12|41->13|41->13|42->14|42->14|46->18|46->18|50->22|50->22|51->23|51->23|53->25|53->25|54->26|54->26|55->27|55->27|56->28|56->28|81->53|81->53|81->53
+                    DATE: Tue Oct 21 21:07:38 WIB 2014
+                    SOURCE: /home/aryo/Documents/Develop/SistemPeminjamanBarang/app/views/login.scala.html
+                    HASH: ce205a82555f1c6f4415f8967d3531a9e1355486
+                    MATRIX: 774->1|885->18|1016->114|1030->120|1078->147|1186->219|1201->225|1256->258|1381->355|1410->356|1477->395|1506->396|1550->412|1579->413|1776->582|1805->583|2030->780|2059->781|2155->849|2184->850|2256->894|2285->895|2320->903|2348->904|2386->915|2415->916|2450->924|2478->925|3200->1611|3215->1617|3264->1644
+                    LINES: 26->1|29->1|37->9|37->9|37->9|38->10|38->10|38->10|40->12|40->12|41->13|41->13|42->14|42->14|46->18|46->18|49->21|49->21|50->22|50->22|52->24|52->24|53->25|53->25|54->26|54->26|55->27|55->27|80->52|80->52|80->52
                     -- GENERATED --
                 */
             
