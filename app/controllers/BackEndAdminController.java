@@ -189,6 +189,10 @@ public class BackEndAdminController extends Controller{
 	
 	
 	public static Result justTest(){
+<<<<<<< HEAD
 		return ok("fahmi");
+=======
+		return ok("Semoga");
+>>>>>>> refs/remotes/origin/master
 	}
 }
