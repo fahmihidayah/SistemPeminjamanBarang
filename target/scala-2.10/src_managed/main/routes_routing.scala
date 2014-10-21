@@ -1,6 +1,6 @@
-// @SOURCE:/home/alifkecil/work/SistemPeminjamanBarang/conf/routes
+// @SOURCE:/home/aryo/Documents/Develop/SistemPeminjamanBarang/conf/routes
 // @HASH:a0826a273ef549a3568d51876ec3e109d4bae88d
-// @DATE:Tue Oct 21 15:22:05 WIT 2014
+// @DATE:Tue Oct 21 22:29:41 WIB 2014
 
 
 import play.core._
