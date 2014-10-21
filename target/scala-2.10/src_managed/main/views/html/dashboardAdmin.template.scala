@@ -37,7 +37,7 @@ Seq[Any](format.raw/*1.29*/("""
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>SB Admin -</title>
     
     <!-- Bootstrap Core CSS -->
     <link href="""),_display_(Seq[Any](/*15.17*/routes/*15.23*/.Assets.at("css/bootstrap.min.css"))),format.raw/*15.58*/(""" rel="stylesheet">
@@ -522,10 +522,10 @@ Seq[Any](format.raw/*1.29*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Tue Oct 21 21:07:38 WIB 2014
-                    SOURCE: /home/aryo/Documents/Develop/SistemPeminjamanBarang/app/views/dashboardAdmin.scala.html
-                    HASH: 425ca576db25a0bedee1e7f7519fca3fd7ed9a80
-                    MATRIX: 787->1|908->28|1330->414|1345->420|1402->455|1497->514|1512->520|1564->550|1667->617|1682->623|1740->659|1838->721|1853->727|1932->784|25922->24737|25938->24743|25994->24776|26099->24844|26115->24850|26171->24883|26275->24950|26291->24956|26360->25002|26425->25030|26441->25036|26509->25081|26574->25109|26590->25115|26659->25161
+                    DATE: Tue Oct 21 15:22:13 WIT 2014
+                    SOURCE: /home/alifkecil/work/SistemPeminjamanBarang/app/views/dashboardAdmin.scala.html
+                    HASH: 6f6582ef393e85ed98d92306aeea8763166c4160
+                    MATRIX: 787->1|908->28|1305->389|1320->395|1377->430|1472->489|1487->495|1539->525|1642->592|1657->598|1715->634|1813->696|1828->702|1907->759|25897->24712|25913->24718|25969->24751|26074->24819|26090->24825|26146->24858|26250->24925|26266->24931|26335->24977|26400->25005|26416->25011|26484->25056|26549->25084|26565->25090|26634->25136
                     LINES: 26->1|29->1|43->15|43->15|43->15|45->17|45->17|45->17|48->20|48->20|48->20|51->23|51->23|51->23|500->472|500->472|500->472|503->475|503->475|503->475|506->478|506->478|506->478|507->479|507->479|507->479|508->480|508->480|508->480
                     -- GENERATED --
                 */
